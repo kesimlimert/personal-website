@@ -12,21 +12,20 @@ import Link from "next/link";
 const links = [
   { link: "/about", label: "About Me" },
   { link: "/pricing", label: "Experience" },
-  { link: "/learn", label: "Projects" },
-  { link: "/community", label: "Community" },
+  { link: "/learn", label: "Projects" }
 ];
 
 const icons = [
   {
-    icon: <IconBrandGithub color="#9562d2" stroke={2} />,
+    icon: <IconBrandGithub color="#cab1ea" stroke={2} />,
     link: "https://github.com/kesimlimert",
   },
   {
-    icon: <IconBrandLinkedin color="#9562d2" stroke={2} />,
+    icon: <IconBrandLinkedin color="#cab1ea" stroke={2} />,
     link: "https://www.linkedin.com/in/mertkesimli/",
   },
   {
-    icon: <IconMail color="#9562d2" stroke={2} />,
+    icon: <IconMail color="#cab1ea" stroke={2} />,
     link: "mailto:mertkesimli@hotmail.com",
   }
 ];

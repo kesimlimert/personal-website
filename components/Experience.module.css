@@ -1,0 +1,7 @@
+.sectionTitle {
+  font-size: rem(52);
+  font-weight: 500;
+  line-height: rem(68);
+  color: var(--mantine-color-white);
+  text-align: center;
+}
