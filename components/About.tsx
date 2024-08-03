@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import profilePic from "../public/profile.jpg";
 import Mui from "../public/mui.svg";
@@ -13,6 +13,10 @@ import TypeScript from "../public/typescript.svg";
 import { Container } from "@mantine/core";
 import { Box, SimpleGrid } from "@mantine/core";
 import classes from "./About.module.css";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const techStack = [
   {
@@ -30,29 +34,39 @@ const techStack = [
   {
     name: "JavaScript",
     image: JavaScript,
-  },
-  {
-    name: "Redux",
-    image: Redux,
-  },
-  {
-    name: "Tailwind CSS",
-    image: Tailwind,
-  },
-  {
-    name: "MUI",
-    image: Mui,
-  },
-  {
-    name: "Supabase",
-    image: Supabase,
-  },
+  }
 ];
 
 export function About() {
+  const boxRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const items = techStack.map((tech) => (
-    <Box key={tech.name} className={classes.techItem}>
+  useEffect(() => {
+    const tl = gsap.timeline();
+
+    boxRefs.current.forEach((ref, index) => {
+      if (ref) {
+        gsap.set(ref, { opacity: 0, transformPerspective: 600 });
+        tl.to(ref, {
+          duration: 1.2, // Further increase duration for a more relaxed animation
+          opacity: 1,
+          rotationY: 0,
+          stagger: 1, // Further increase stagger value
+          ease: "power3.inOut", // Use an even smoother easing function
+          delay: index * 0.1, // Further increase delay between items
+        });
+      }
+    });
+  }, []);
+
+  const items = techStack.map((tech, index) => (
+    <Box
+      ref={(el) => {
+        boxRefs.current[index] = el;
+      }}
+      key={tech.name}
+      className={classes.techItem}
+      style={{ transform: "rotateY(90deg)" }}
+    >
       <Image
         width={100}
         alt={tech.name}
@@ -82,8 +96,7 @@ export function About() {
         </Box>
       </Box>
       <Box className={classes.techStack}>
-        <h2 className={classes.subTitle}>Technologies</h2>
-        <SimpleGrid cols={4} spacing="lg">
+        <SimpleGrid cols={4} spacing="xl">
           {items}
         </SimpleGrid>
       </Box>
