@@ -63,7 +63,7 @@ export function About() {
   ));
 
   return (
-    <Container className={classes.container} size="md">
+    <Container id="aboutMe" className={classes.container} size="md">
       <Box className={classes.about}>
         <Box className={classes.imageWrapper}>
           <Image

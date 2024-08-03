@@ -10,9 +10,9 @@ import classes from "./Header.module.css";
 import Link from "next/link";
 
 const links = [
-  { link: "/about", label: "About Me" },
-  { link: "/pricing", label: "Experience" },
-  { link: "/learn", label: "Projects" }
+  { link: "#aboutMe", label: "About Me" },
+  { link: "#experience", label: "Experience" },
+  { link: "#contact", label: "Projects" }
 ];
 
 const icons = [
@@ -43,6 +43,10 @@ export function Header() {
       onClick={(event) => {
         event.preventDefault();
         setActive(link.link);
+        const section = document.querySelector(link.link);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
       }}
     >
       {link.label}
@@ -67,7 +71,7 @@ export function Header() {
         <Group gap={5} visibleFrom="xs">
           {items}
         </Group>
-        <Group gap={5} visibleFrom="xs">
+        <Group gap={5} pt="xs" visibleFrom="xs">
           {iconItems}
         </Group>
         <Burger color="purple" opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
