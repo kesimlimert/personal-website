@@ -109,7 +109,7 @@ transform: scaleX(1);
 .description {
   font-size: rem(20);
   font-weight: 400;
-  color: var(--mantine-color-purple-4);
+  color: var(--mantine-color-purple-2);
 }
 
 .textWrapper {

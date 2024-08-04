@@ -2,13 +2,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import profilePic from "../public/profile.jpg";
-import Mui from "../public/mui.svg";
 import NextJs from "../public/nextjs.svg";
 import JavaScript from "../public/javascript.png";
 import ReactLogo from "../public/react.png";
-import Redux from "../public/redux.png";
-import Supabase from "../public/supabase.svg";
-import Tailwind from "../public/tailwind.svg";
 import TypeScript from "../public/typescript.svg";
 import { Container } from "@mantine/core";
 import { Box, SimpleGrid } from "@mantine/core";
@@ -47,12 +43,12 @@ export function About() {
       if (ref) {
         gsap.set(ref, { opacity: 0, transformPerspective: 600 });
         tl.to(ref, {
-          duration: 1.2, // Further increase duration for a more relaxed animation
+          duration: 1.2, 
           opacity: 1,
           rotationY: 0,
-          stagger: 1, // Further increase stagger value
-          ease: "power3.inOut", // Use an even smoother easing function
-          delay: index * 0.1, // Further increase delay between items
+          stagger: 1,
+          ease: "power3.inOut",
+          delay: index * 0.1, 
         });
       }
     });

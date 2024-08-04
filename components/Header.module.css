@@ -39,3 +39,11 @@
     color: var(--mantine-color-white);
   }
 }
+
+.drawerContent, .drawerHeader {
+  background-color: var(--mantine-color-purple-9);
+}
+
+.drawerContent {
+  padding-top: rem(88px);
+}

@@ -1,18 +1,18 @@
 "use client";
 import { useState } from "react";
-import { Container, Group, Burger } from "@mantine/core";
+import { Container, Group, Burger, Box, Drawer } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconBrandGithub } from "@tabler/icons-react";
 import { IconBrandLinkedin } from "@tabler/icons-react";
-import { IconMail } from '@tabler/icons-react';
-import { Button } from '@mantine/core';
+import { IconMail } from "@tabler/icons-react";
+import { Button } from "@mantine/core";
 import classes from "./Header.module.css";
 import Link from "next/link";
 
 const links = [
   { link: "#aboutMe", label: "About Me" },
   { link: "#experience", label: "Experience" },
-  { link: "#contact", label: "Projects" }
+  { link: "#projects", label: "Projects" },
 ];
 
 const icons = [
@@ -27,7 +27,7 @@ const icons = [
   {
     icon: <IconMail color="#cab1ea" stroke={2} />,
     link: "mailto:mertkesimli@hotmail.com",
-  }
+  },
 ];
 
 export function Header() {
@@ -45,7 +45,7 @@ export function Header() {
         setActive(link.link);
         const section = document.querySelector(link.link);
         if (section) {
-          section.scrollIntoView({ behavior: 'smooth' });
+          section.scrollIntoView({ behavior: "smooth" });
         }
       }}
     >
@@ -74,7 +74,19 @@ export function Header() {
         <Group gap={5} pt="xs" visibleFrom="xs">
           {iconItems}
         </Group>
-        <Burger color="purple" opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+        <Burger
+          color="purple"
+          opened={opened}
+          onClick={toggle}
+          hiddenFrom="xs"
+          size="sm"
+        />
+        <Drawer size="xs" classNames={{content: classes.drawerContent, header: classes.header}} opened={opened} onClose={toggle}>
+          {items}
+          <Box pl="xs" pt="lg">
+            {iconItems}
+          </Box>
+        </Drawer>
       </Container>
     </header>
   );
