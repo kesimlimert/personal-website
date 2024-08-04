@@ -12,7 +12,7 @@ const projects = [
   {
     name: "Yukselt",
     description:
-      "The Yukselt project, developed at İleri İşler, aims to enhance the hotel booking experience by offering users the option to upgrade their reservations to higher-quality rooms. This involves viewing available upgrades, paying the difference, and smoothly transferring to the new room. I was responsible for all frontend development aspects of the project. This included displaying room options retrieved from the cloud, setting up the reservation logic, and implementing a message-based verification system that allows users to log in and complete payments seamlessly. My contributions ensured a user-friendly interface and efficient reservation process, enhancing the overall customer experience.",
+      "The Yukselt project at İleri İşler enhances hotel booking by allowing users to upgrade their reservations. I handled all frontend development, including displaying cloud-based room options, setting up reservation logic, and implementing message-based verification for seamless login and payment. My work ensured a user-friendly interface and efficient reservation process, improving the customer experience.",
     image: yukselt,
     badge: [
       "TypeScript",
