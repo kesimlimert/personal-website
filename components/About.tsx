@@ -31,11 +31,10 @@ const techStack = [
 
 export function About() {
 
-  const items = techStack.map((tech, index) => (
+  const items = techStack.map((tech) => (
     <Box
       key={tech.name}
       className={classes.techItem}
-      style={{ transform: "rotateY(90deg)" }}
     >
       <Image
         width={100}
