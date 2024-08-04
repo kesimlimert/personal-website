@@ -9,6 +9,8 @@ import TypeScript from "../public/typescript.svg";
 import { Container } from "@mantine/core";
 import { Box, SimpleGrid } from "@mantine/core";
 import classes from "./About.module.css";
+import { usePathname } from "next/navigation";
+import { useInViewport } from '@mantine/hooks';
 
 const techStack = [
   {
@@ -30,7 +32,7 @@ const techStack = [
 ];
 
 export function About() {
-
+  
   const items = techStack.map((tech) => (
     <Box
       key={tech.name}

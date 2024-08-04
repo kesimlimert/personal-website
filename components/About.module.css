@@ -128,9 +128,14 @@ transform: scaleX(1);
   }
   .imageWrapper {
     order: 2;
+    padding-bottom: rem(24);
   }
   .techItem {
     padding: rem(12);
+  }
+
+  .techStack {
+    
   }
 }
 

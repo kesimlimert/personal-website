@@ -52,6 +52,7 @@ const experienceItem = experiences.map((experience) => (
 ));
 
 export const Experience = () => {
+  
   return (
     <Container id="experience" size="md" className={classes.container}>
       <Box className={classes.titleWrapper}>

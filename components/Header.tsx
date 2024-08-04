@@ -1,11 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Container, Group, Burger, Box, Drawer } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconBrandGithub } from "@tabler/icons-react";
 import { IconBrandLinkedin } from "@tabler/icons-react";
 import { IconMail } from "@tabler/icons-react";
-import { Button } from "@mantine/core";
 import classes from "./Header.module.css";
 import Link from "next/link";
 
@@ -33,7 +32,7 @@ const icons = [
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
-
+  
   const items = links.map((link) => (
     <Link
       key={link.label}
@@ -75,7 +74,7 @@ export function Header() {
           {iconItems}
         </Group>
         <Burger
-          color="purple"
+          color="#cab1ea"
           opened={opened}
           onClick={toggle}
           hiddenFrom="xs"
