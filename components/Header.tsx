@@ -32,6 +32,28 @@ const icons = [
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = links.map(link => document.querySelector(link.link));
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      for (const section of sections) {
+        if (section) {
+          const { offsetTop, offsetHeight } = section as HTMLElement;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActive(`#${section.id}`);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
   const items = links.map((link) => (
     <Link
