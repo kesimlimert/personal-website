@@ -9,8 +9,7 @@ import TypeScript from "../public/typescript.svg";
 import { Container } from "@mantine/core";
 import { Box, SimpleGrid } from "@mantine/core";
 import classes from "./About.module.css";
-import { usePathname } from "next/navigation";
-import { useInViewport } from '@mantine/hooks';
+import { motion } from "framer-motion";
 
 const techStack = [
   {
@@ -28,15 +27,37 @@ const techStack = [
   {
     name: "JavaScript",
     image: JavaScript,
-  }
+  },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.5,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+    },
+  },
+};
+
 export function About() {
-  
   const items = techStack.map((tech) => (
-    <Box
+    <motion.div
       key={tech.name}
       className={classes.techItem}
+      variants={itemVariants}
     >
       <Image
         width={100}
@@ -44,33 +65,40 @@ export function About() {
         src={tech.image}
         className={classes.techImage}
       />
-    </Box>
+    </motion.div>
   ));
 
   return (
-    <Container id="aboutMe" className={classes.container} size="md">
-      <Box className={classes.about}>
-        <Box className={classes.imageWrapper}>
-          <Image
-            className={classes.profilePic}
-            width={300}
-            height={300}
-            alt="profile picture"
-            src={profilePic}
-          />
+    <motion.div
+      id="aboutMe"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <Container id="aboutMe" className={classes.container} size="md">
+        <Box className={classes.about}>
+          <Box className={classes.imageWrapper}>
+            <Image
+              className={classes.profilePic}
+              width={300}
+              height={300}
+              alt="profile picture"
+              src={profilePic}
+            />
+          </Box>
+          <Box className={classes.textWrapper}>
+            <h1 className={classes.title}>Hello, my name is Mert Kesimli</h1>
+            <p className={classes.description}>
+              A Frontend Developer which never stops learning.
+            </p>
+          </Box>
         </Box>
-        <Box className={classes.textWrapper}>
-          <h1 className={classes.title}>Hello, my name is Mert Kesimli</h1>
-          <p className={classes.description}>
-            A Frontend Developer which never stops learning.
-          </p>
+        <Box className={classes.techStack}>
+          <SimpleGrid cols={4} spacing="xl">
+            {items}
+          </SimpleGrid>
         </Box>
-      </Box>
-      <Box className={classes.techStack}>
-        <SimpleGrid cols={4} spacing="xl">
-          {items}
-        </SimpleGrid>
-      </Box>
-    </Container>
+      </Container>
+    </motion.div>
   );
 }

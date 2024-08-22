@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import classes from "./Projects.module.css";
 import graff from "../public/graff.png";
 import mouwad from "../public/mouwad.png";
@@ -6,7 +6,8 @@ import originalbtc from "../public/originalbtc.png";
 import yukselt from "../public/yukselt.png";
 import kastas from "../public/kastas.png";
 import Image from "next/image";
-import { Container, Box, Badge, Flex, SimpleGrid } from "@mantine/core";
+import { Container, Box, Badge, Flex } from "@mantine/core";
+import { useInView, motion } from "framer-motion";
 
 const projects = [
   {
@@ -62,39 +63,53 @@ const projects = [
 ];
 
 export function Projects() {
-  const projectItem = projects.map((project) => (
-    <Box key={project.name} className={classes.projectItem}>
-      <Box className={classes.imageWrapper}>
-        <Image className={classes.image} width={600} src={project.image} alt={project.name} />
+
+  const projectItem = projects.map((project) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true });
+
+    return (
+      <motion.div
+      key={project.name}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5 }}
+    >
+      <Box ref={ref} className={classes.projectItem}>
+        <Box className={classes.imageWrapper}>
+          <Image
+            className={classes.image}
+            width={600}
+            src={project.image}
+            alt={project.name}
+          />
+        </Box>
+        <Box>
+          <p className={classes.projectDescription}>{project.description}</p>
+          <Flex gap="md" className={classes.badgesGrid} wrap="wrap">
+            {project.badge.map((tech) => (
+              <Badge
+                key={tech}
+                size="md"
+                radius="lg"
+                className={classes.techItem}
+              >
+                {tech}
+              </Badge>
+            ))}
+          </Flex>
+        </Box>
       </Box>
-      <Box>
-        <p className={classes.projectDescription}>{project.description}</p>
-        <Flex gap="md" className={classes.badgesGrid} wrap="wrap">
-          {project.badge.map((tech) => (
-            <Badge
-              key={tech}
-              size="md"
-              radius="lg"
-              className={classes.techItem}
-            >
-              {tech}
-            </Badge>
-          ))}
-        </Flex>
-      </Box>
-    </Box>
-  ));
+    </motion.div>
+    );
+  });
 
   return (
-    <Container pb='xl' id="projects" size="md">
+    <Container pb="xl" id="projects" size="md">
       <Box className={classes.titleWrapper}>
         <h2 className={classes.sectionTitle}>Projects</h2>
       </Box>
-      <Box
-        className={classes.projectsWrapper}
-      >
-        {projectItem}
-      </Box>
+      <Box className={classes.projectsWrapper}>{projectItem}</Box>
     </Container>
   );
 }

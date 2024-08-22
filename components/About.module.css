@@ -37,7 +37,7 @@ transform: scaleX(1);
 }
 
 .container {
-  padding-top: rem(120px);
+  padding-top: rem(120px);  
 }
 
 .techStack {
@@ -105,10 +105,6 @@ transform: scaleX(1);
   }
   .techItem {
     padding: rem(12);
-  }
-
-  .techStack {
-    
   }
 }
 
