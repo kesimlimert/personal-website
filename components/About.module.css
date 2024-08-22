@@ -106,6 +106,21 @@ transform: scaleX(1);
   .techItem {
     padding: rem(12);
   }
+  .container {
+    padding-top: rem(32px);
+  }
+  .title {
+    font-size: rem(40);
+    font-weight: 700;
+    text-align: center;
+    line-height: rem(56);
+    color: var(--mantine-color-white);
+    position: relative;
+  }
+  .description {
+    text-align: center;
+    font-size: rem(16);
+  }
 }
 
 @media (max-width: 36em) {
