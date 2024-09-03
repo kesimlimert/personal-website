@@ -15,7 +15,7 @@ const experiences = [
   {
     title: "Frontend Developer",
     company: "feature/mind · Full-time",
-    date: "Dec 2021 - Jul 2022 · 8 mos",
+    date: "Jan 2022 - Nov 2022 · 11 mos",
     location: "İzmir, Turkey · Remote",
     tech: ["JavaScript", "Node.js", "Salesforce", "Sass"],
   },

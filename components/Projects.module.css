@@ -61,6 +61,12 @@
   color: var(--mantine-color-purple-2);
 }
 
+.link {
+  font-size: rem(16);
+  font-weight: 700;
+  color: var(--mantine-color-purple-1);
+}
+
 @media (max-width : 62em) {
     .projectItem {
         flex-direction: column;
