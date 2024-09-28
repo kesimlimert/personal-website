@@ -6,7 +6,7 @@ import "./global.css";
 
 export const metadata = {
   title: "Mert Kesimli",
-  description: "A Frontend Developer which never stops learning.",
+  description: "A Frontend Developer who never stops learning.",
 };
 
 export default function RootLayout({ children }: { children: any }) {

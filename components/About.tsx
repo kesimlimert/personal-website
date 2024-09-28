@@ -89,7 +89,7 @@ export function About() {
           <Box className={classes.textWrapper}>
             <h1 className={classes.title}>Hello, my name is Mert Kesimli</h1>
             <p className={classes.description}>
-              A Frontend Developer which never stops learning.
+              A Frontend Developer who never stops learning.
             </p>
           </Box>
         </Box>
